@@ -21,21 +21,20 @@ public class Main {
                 sc.nextLine();
                 continue;
             }
-            System.out.print("사칙연산 기호를 입력하세요(종료를 원하시면 exit) : ");
+            System.out.print("사칙연산 기호를 입력하세요 : ");
             String c = sc.next();
-            if (c.equals("exit")) {
-                System.out.println("종료합니다.");
-                break;
-            } else if (c.charAt(0) == '/' && j == 0) {
+            if (c.charAt(0) == '/' && j == 0) {
                 System.out.println("분모가 0 이 될수 없습니다. 재입력 부탁드립니다.");
-            } else if (c.charAt(0) == '*' || c.charAt(0) == '/' || c.charAt(0) == '+' || c.charAt(0) == '-') {
-                calc.setter(calc.calc(i, j,c.charAt(0)));
             }
             else {
-                System.out.println("제대로 된 사칙연산 기호를 입력부탁드립니다.(+,*,/,-)");
+                calc.setter(i, j, c);
+            }
+            System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)");
+            String d = sc.next();
+            if (d.equals("exit")) {
+                break;
             }
         }
-        calc.getter();
         calc.remove();
         calc.getter();
     }
