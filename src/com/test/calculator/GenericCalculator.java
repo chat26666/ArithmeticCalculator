@@ -29,7 +29,7 @@ public class GenericCalculator<T extends Number> {
     }
 
     public void computeAndStoreResult(T num1, T num2, String operatorSymbol) {
-        Arrays.stream(com.test.calculator.ArithmeticOperator.values())
+        Arrays.stream(ArithmeticOperator.values())
                 .filter(op -> op.getSymbol().equals(operatorSymbol))
                 .forEach(op -> results.add(op.calculate(num1, num2)));
     }
