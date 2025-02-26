@@ -18,18 +18,17 @@ public class calculator<T extends Number> {
     public void remove() {
         list.remove(0);
     }
-
-    public void bigger_data(T i) {
-        System.out.println(list.stream().filter(e -> e.doubleValue() > i.doubleValue()).toList());
+    public void bigger_data(T data) {
+        //스트림 필터 기능을 사용하여 매개변수로 받아온 data보다 더 큰 값만 걸러내서 콘솔에 출력
+        System.out.println(list.stream().filter(e -> e.doubleValue() > data.doubleValue()).toList());
     }
-
-    public void setter(T i,T j,String c) {
-        Arrays.stream(operator.values()).filter(cal -> cal.getOp().equals(c)).forEach(cal -> list.add(cal.calc(i,j)));
+    public void setter(T num1,T num2,String sign) {
+        Arrays.stream(operator.values()).filter(cal -> cal.getOp().equals(sign)).forEach(cal -> list.add(cal.calc(num1,num2)));
         /*for 문에서 스트림 필터 방식으로 변환
         operator[] op = operator.values();
          for(operator oo : op) {
-           if(oo.getOp().equals(c)) {
-                 list.add(oo.calc(i,j));
+           if(oo.getOp().equals(sign)) {
+                 list.add(oo.calc(num1,num2));
              }
           }*/
     }
