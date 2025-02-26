@@ -3,19 +3,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        calculator calc = new calculator();
+        calculator<Double> calc = new calculator<>();
         Scanner sc = new Scanner(System.in);
-        int i, j;
+        double i, j;
         while (true) {
             try {
-                System.out.print("첫번째 양의 정수를 입력하세요 : ");
-                i = sc.nextInt();
-                System.out.print("두번째 양의 정수를 입력하세요 : ");
-                j = sc.nextInt();
-                if (j < 0 || i < 0) {
-                    System.out.println("\n에러*** 양의 정수를 입력해주십시오.\n");
-                    continue;
-                }
+                System.out.print("첫번째 수를 입력하세요 : ");
+                i = sc.nextDouble();
+                System.out.print("두번째 수를 입력하세요 : ");
+                j = sc.nextDouble();
             } catch (Exception e) {
                 System.out.println("양의 정수를 입력해주십시오.");
                 sc.nextLine();
@@ -34,6 +30,7 @@ public class Main {
             if (d.equals("exit")) {
                 break;
             }
+
         }
         calc.remove();
         calc.getter();

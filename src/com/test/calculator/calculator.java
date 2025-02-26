@@ -1,9 +1,9 @@
 package com.test.calculator;
 import java.util.ArrayList;
 
-public class calculator {
+public class calculator<T extends Number> {
 
-    private ArrayList<Integer> list;
+    private ArrayList<T> list;
 
     public calculator() {
         list = new ArrayList<>();
@@ -16,7 +16,7 @@ public class calculator {
     public void remove() {
         list.remove(0);
     }
-    public void setter(int i,int j,String c) {
+    public void setter(T i,T j,String c) {
         operator[] op = operator.values();
         for(operator oo : op) {
             if(oo.getOp().equals(c)) {

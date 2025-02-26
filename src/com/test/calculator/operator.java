@@ -3,30 +3,30 @@ package com.test.calculator;
 public enum operator {
     ADD("+") {
         @Override
-        public int calc(int i, int j) {
-            System.out.println(i + " + " + j + " = " + (i+j));
-            return i + j;
+        public <T extends Number> T calc(T i, T j) {
+            System.out.println(i + " + " + j + " = " + (i.doubleValue() + j.doubleValue()));
+            return (T)(Double)(i.doubleValue() + j.doubleValue());
         }
     },
     SUB("-") {
         @Override
-        public int calc(int i, int j) {
-            System.out.println(i + " - " + j + " = " + (i-j));
-            return i - j;
+        public <T extends Number> T calc(T i, T j) {
+            System.out.println(i + " - " + j + " = " + (i.doubleValue() - j.doubleValue()));
+            return (T)(Double)(i.doubleValue() - j.doubleValue());
         }
     },
     MUL("*") {
         @Override
-        public int calc(int i, int j) {
-            System.out.println(i + " * " + j + " = " + (i*j));
-            return i * j;
+        public <T extends Number> T calc(T i, T j) {
+            System.out.println(i + " * " + j + " = " + (i.doubleValue() * j.doubleValue()));
+            return (T)(Double)(i.doubleValue() * j.doubleValue());
         }
     },
     DIV("/") {
         @Override
-        public int calc(int i, int j) {
-            System.out.println(i + " / " + j + " = " + (i/j));
-            return i / j;
+        public <T extends Number> T calc(T i, T j) {
+            System.out.println(i + " / " + j + " = " + (i.doubleValue() / j.doubleValue()));
+            return (T)(Double)(i.doubleValue() / j.doubleValue());
         }
     };
     private final String op;
@@ -36,5 +36,6 @@ public enum operator {
     public String getOp() {
         return op;
     }
-    abstract int calc(int i, int j);
+
+    public abstract <T extends Number> T calc(T i, T j);
 }
