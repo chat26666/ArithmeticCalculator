@@ -12,7 +12,7 @@ public class CalculatorInputHandler {
     public void handleArithmeticInput() {
         Scanner scanner = new Scanner(System.in);
         double num1, num2;
-
+        //사용자가 수가 아닌 문자열을 입력할 수도 있기 때문에 예외처리
         while (true) {
             try {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -21,12 +21,13 @@ public class CalculatorInputHandler {
                 num2 = scanner.nextDouble();
             } catch (InputMismatchException e) {
                 System.out.println("⚠ 숫자를 입력해 주세요.");
-                scanner.nextLine();
+                scanner.nextLine();  //  <---- 버퍼를 비워주는 용도, 이 라인이 없으면 무한루프를 돈다.
                 continue;
             }
 
             System.out.print("사칙연산 기호를 입력하세요: ");
             String operatorSymbol = scanner.next();
+            //나눗셈이면서 분모가 0 인 경우, ArithmeticException throw
             try {
                 if (operatorSymbol.equals("/") && num2 == 0) {
                     throw new ArithmeticException();
