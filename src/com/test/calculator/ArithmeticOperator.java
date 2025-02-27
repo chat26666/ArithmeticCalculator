@@ -5,12 +5,7 @@ public enum ArithmeticOperator {
     ADD("+", (num1, num2) -> num1.doubleValue() + num2.doubleValue()),
     SUBTRACT("-", (num1, num2) -> num1.doubleValue() - num2.doubleValue()),
     MULTIPLY("*", (num1, num2) -> num1.doubleValue() * num2.doubleValue()),
-    DIVIDE("/", (num1, num2) -> {
-        if (num2.doubleValue() == 0) {
-            throw new ArithmeticException("⚠ 나눗셈에서 분모가 0이 될 수 없습니다.");
-        }
-        return num1.doubleValue() / num2.doubleValue();
-    });
+    DIVIDE("/", (num1, num2) -> num1.doubleValue() / num2.doubleValue());
 
     private final BiFunction<Double, Double, Double> operation;
     private final String symbol;

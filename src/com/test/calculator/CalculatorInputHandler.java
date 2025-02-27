@@ -27,13 +27,18 @@ public class CalculatorInputHandler {
 
             System.out.print("사칙연산 기호를 입력하세요: ");
             String operatorSymbol = scanner.next();
-
-            if (operatorSymbol.equals("/") && num2 == 0) {
+            try {
+                if (operatorSymbol.equals("/") && num2 == 0) {
+                    throw new ArithmeticException();
+                }
+                else if (operatorSymbol.matches("[+\\-*/]")) {
+                    calculator.computeAndStoreResult(num1, num2, operatorSymbol);
+                } else {
+                    System.out.println("⚠ 올바른 연산 기호를 입력해 주세요.");
+                    continue;
+                }
+            } catch(ArithmeticException e) {
                 System.out.println("⚠ 분모가 0이 될 수 없습니다.");
-            } else if (operatorSymbol.matches("[+\\-*/]")) {
-                calculator.computeAndStoreResult(num1, num2, operatorSymbol);
-            } else {
-                System.out.println("⚠ 올바른 연산 기호를 입력해 주세요.");
                 continue;
             }
 
